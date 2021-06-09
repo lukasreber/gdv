@@ -1,0 +1,89 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+```{r}
+library(tidyverse)
+
+```
+
+```{r}
+ggplot(data = mpg)
+```
+
+```{r}
+nrow(mpg)
+ncol(mpg)
+```
+
+```{r}
+?mpg
+# f = front-wheel drive, r = rear wheel drive, 4 = 4wd
+```
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = hwy, y = cyl))
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = class, y = drv))
+```
+
+```{r}
+ggplot(data=mpg) +
+  geom_point(mapping=aes(x=displ,y=hwy,color=displ < 5))
+```
+
+```{r}
+?geom_point
+vignette("ggplot2-specs")
+```
+
+```{r}
+ggplot(data=mpg) +
+  geom_point(mapping=aes(x=displ, y=hwy)) +
+  facet_wrap(~ class, nrow=2)
+```
+
+```{r}
+ggplot(data=mpg) +
+  geom_point(mapping=aes(x=displ,y=hwy)) +
+  facet_grid(drv ~ cyl)
+```
+
+```{r}
+mpg
+```
+
+```{r}
+ggplot(data=mpg) +
+  geom_point(mapping=aes(x=displ,y=hwy)) +
+  facet_wrap(~ cty)
+```
+
+```{r}
+ggplot(data=mpg) +
+  geom_smooth(mapping = aes(x=displ,y=hwy))
+```
+
+```{r}
+ggplot(data=mpg, mapping=aes(x=displ,y=hwy)) +
+  geom_point(mapping = aes(color=class)) +
+  geom_smooth(se = FALSE)
+```
+
+```{r}
+ggplot(data=mpg, mapping=aes(x=displ,y=hwy)) +
+  geom_point(mapping=aes(color=drv)) +
+    geom_smooth(mapping=aes(linetype=drv),se = FALSE)
+
+```
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE)
+```
+
